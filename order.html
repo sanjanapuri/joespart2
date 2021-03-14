@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<title>Jade Delight | Order Summary</title>
+<link rel="stylesheet" href="joesstyles.css">
+<script language="javascript">
+	window.onload = function(){
+
+		var quantity = localStorage.getItem("quantity"); 
+		var mItems = localStorage.getItem("items"); 
+
+		document.getElementById("displaytotal").innerHTML = localStorage.getItem("total");
+
+		quantity = quantity.split(" ");
+		l = quantity.length - 1;  
+		for(i = 1; i < l; i++){
+			parseInt(quantity[i]); 
+		}
+
+		mItems = mItems.split(",");
+
+		for(i = 1; i < l; i++){
+			if(quantity[i] != 0){ //ID quant + i = quantity[i], item + i = item[i]
+				qID = "quant" + i; 
+				mID = "item" + i; 
+				document.getElementById(qID).innerHTML = quantity[i];
+				document.getElementById(mID).innerHTML = mItems[i];
+			}
+		}
+	}
+
+</script>
+</head>
+
+<body>
+	<h1 class = "sub" align="center">Order Summary: </h1>
+	<h2>Your Order: </h2>
+	<table>
+		<tr id="1">
+			<td id="quant1"></td>
+			<td id="item1"></td>
+		</tr>
+		<tr id="2">
+			<td id="quant2"></td>
+			<td id="item2"></td>
+		</tr>
+		<tr id="3">
+			<td id="quant3"></td>
+			<td id="item3"></td>
+		</tr>
+	</table>
+	<h2>Your order total is $<div id= "displaytotal" style="display:inline"></div></h2>
+</body>
+</html>
